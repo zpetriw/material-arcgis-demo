@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import { keyframes } from 'styled-components';
 import logo from './logo.svg';
 import PropTypes from 'prop-types';
+import { headerHeight } from '../constants/style';
 
 const appLogoKeyframes = keyframes`
   from { transform: rotate(0deg); }
@@ -13,7 +14,7 @@ const appLogoKeyframes = keyframes`
 const styles = theme => ({
     appLogo: {
       animation: `${appLogoKeyframes} infinite 20s linear`,
-      height: 64  
+      height: headerHeight
     }
   });
 
