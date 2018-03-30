@@ -13,8 +13,8 @@ const appLogoKeyframes = keyframes`
 
 const styles = theme => ({
     appLogo: {
-      animation: `${appLogoKeyframes} infinite 20s linear`,
-      height: headerHeight
+        animation: `${appLogoKeyframes} infinite 20s linear`,
+        height: headerHeight,
     }
   });
 

@@ -13,7 +13,6 @@ export const initializeArcGisMap = (mapValue, viewValue) => {
 // Load the components as promises.
 const setUpMapViewWidgets = () => {
     esriPromise(['esri/widgets/BasemapToggle', 'esri/widgets/ScaleBar', 'esri/widgets/Compass']).then(([ BasemapToggle, ScaleBar, Compass ]) => {
-        console.log(view.ui);
         var toggle = new BasemapToggle({
             view: view,
             nextBasemap: 'satellite'
@@ -29,6 +28,32 @@ const setUpMapViewWidgets = () => {
             view: view
         });
         view.ui.add(compass, "top-left");
-        console.log(view.ui);
+
     }).catch((err) => console.error(err));
+};
+
+export const buildLayers = () => {
+    const layers = [];
+    map.layers.items.forEach(item => {
+        layers.push({
+            title: item.title,
+            visible: item.visible
+        });
+    });
+    return layers;
+};
+
+// Get the title of the current basemap. 
+export const getBasemap = () => {
+    return map.basemap.title;
+};
+
+// Change the basemap to the supplied one.
+export const changeBasemap = (basemap) => {
+    map.basemap = basemap;
+};
+
+export const setLayerVisibility = (layerTitle, visible) => {
+    const layer = map.layers.items.find(item => item.title === layerTitle);
+    layer.visible = visible;
 };
